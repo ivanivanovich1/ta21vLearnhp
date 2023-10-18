@@ -1,10 +1,14 @@
 <?php
 namespace App\Controllers;
 
+use App\DB;
+use App\Models\Post;
+use App\Models\User;
+
 class PublicController {
     public function index(){
-        $name = 'Kaspar';
-        view('index', compact('name'));
+        $posts = Post::all();
+        view('index', compact('posts'));
         //view('index', ['name'=>$name]);
     }
 
