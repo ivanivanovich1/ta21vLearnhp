@@ -1,21 +1,21 @@
 <?php include __DIR__ . '/../partials/header.php' ?>
 <div class="container">
-    <form action="/admin/posts" method="POST">
+    <form action="/admin/users" method="POST">
         <div class="field">
             <label class="label" for="title">Email</label>
             <div class="control">
-                <input id="title" class="input" type="text" placeholder="Title" name="title">
+                <input id="email" class="input" type="text" placeholder="Email" name="email">
             </div>
         </div>
         <div class="field">
-            <label class="label" for="body">Content</label>
+            <label class="label" for="body">Password</label>
             <div class="control">
-                <textarea id="body" class="textarea" placeholder="Content" name="body"></textarea>
+                <input id="password" class="input" placeholder="******" name="password"></input>
             </div>
         </div>
         <div class="field">
             <div class="control">
-                <input class="button is-primary" type="submit" value="Create">
+                <input class="button is-primary" type="submit" value="Create User">
             </div>
         </div>
     </form>
