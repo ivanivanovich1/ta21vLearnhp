@@ -1,43 +1,51 @@
 <?php
+
 namespace App\Controllers;
 
 use App\Exceptions\NotFoundException;
 use App\Models\Post;
 
-class PostsController {
-    public function index(){
+class PostsController
+{
+    public function index()
+    {
         $posts = Post::all();
         view('posts/index', compact('posts'));
     }
-    public function create(){
+    public function create()
+    {
         view('posts/create');
     }
-    public function store(){
+    public function store()
+    {
         $post = new Post();
         $post->title = $_POST['title'];
         $post->body = $_POST['body'];
         $post->save();
         header('Location: /admin/posts');
     }
-    public function show(){
+    public function show()
+    {
         $post = Post::find($_GET['id']);
-        if($post){
+        if ($post) {
             view('posts/show', compact('post'));
         } else {
             throw new NotFoundException();
         }
     }
-    public function edit(){
+    public function edit()
+    {
         $post = Post::find($_GET['id']);
-        if($post){
+        if ($post) {
             view('posts/edit', compact('post'));
         } else {
             throw new NotFoundException();
         }
     }
-    public function update(){
+    public function update()
+    {
         $post = Post::find($_GET['id']);
-        if($post){
+        if ($post) {
             $post->title = $_POST['title'];
             $post->body = $_POST['body'];
             $post->save();
@@ -46,9 +54,10 @@ class PostsController {
             throw new NotFoundException();
         }
     }
-    public function destroy(){
+    public function destroy()
+    {
         $post = Post::find($_GET['id']);
-        if($post){
+        if ($post) {
             $post->delete();
             header('Location: /admin/posts');
         } else {
